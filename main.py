@@ -1,22 +1,17 @@
 from flask import Flask, render_template, request
+import random
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def index():
-    # عرض الصفحة الرئيسية
     return render_template('index.html')
 
+@app.route('/analyze', methods=['POST'])
+def analyze():
+    # هذا السطر هو اللي بيعطيك نسبة عشوائية في كل مرة
+    score = random.randint(75, 98) 
+    return f"تم التحليل بنجاح! النتيجة هي: {score}%"
 
-@app.route('/check', methods=['POST'])
-def check_similarity():
-    # هنا تضع منطق فحص التشابه مستقبلاً
-    # حالياً سنرسل نتيجة تجريبية كما في صورتك
-    result_text = "شبه مشابه"
-    return render_template('index.html', result=result_text)
-
-
-if __name__ == "__main__":
-    # تشغيل السيرفر على منفذ 8080 المتوافق مع Replit
-    app.run(host='0.0.0.0', port=8080, debug=True)
+if name == "__main__":
+    app.run(host='0.0.0.0', port=10000)
