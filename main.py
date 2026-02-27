@@ -64,5 +64,5 @@ def analyze():
     """
 
 # هذا السطر فقط للتشغيل المحلي
-if__ name__ == "__main__":
+if__ name__== "__main__":
     app.run(host="0.0.0.0", port=5000)
