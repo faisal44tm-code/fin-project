@@ -1,17 +1,24 @@
-from flask import Flask, render_template, request
+from flask import Flask
 import random
 
 app = Flask(__name__)
 
 @app.route('/')
-def index():
-    return render_template('index.html')
+def home():
+    # هذا السطر هو اللي بيعطيك نسبة مئوية متغيرة في كل مرة تفتح الصفحة
+    score = random.randint(75, 99)
+    return f"""
+    <html>
+        <body style="text-align: center; font-family: Arial; padding-top: 100px;">
+            <h1 style="color: #2c3e50;">نظام تحليل فيصل الذكي</h1>
+            <div style="font-size: 50px; color: #27ae60; margin: 20px;">
+                النتيجة: {score}%
+            </div>
+            <p>تحديث الصفحة يعطيك نتيجة جديدة</p>
+            <button onclick="location.reload()" style="padding: 10px 20px; cursor: pointer;">تحليل جديد</button>
+        </body>
+    </html>
+    """
 
-@app.route('/analyze', methods=['POST'])
-def analyze():
-    # هذا السطر هو اللي بيعطيك نسبة عشوائية في كل مرة
-    score = random.randint(75, 98) 
-    return f"تم التحليل بنجاح! النتيجة هي: {score}%"
-
-if __name__ == "__main__":
+if name == "__main__":
     app.run(host='0.0.0.0', port=10000)
