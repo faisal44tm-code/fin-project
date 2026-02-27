@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Similarity Checker - فحص التشابه</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            padding-top: 50px;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: inline-block;
+            min-width: 350px;
+        }
+        h1 { color: #333; }
+        textarea {
+            width: 90%;
+            height: 100px;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4A90E2;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        button:hover { background-color: #357ABD; }
+        .result-box {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            border: 1px dashed #ddd;
+        }
+        .result-text {
+            color: orange;
+            font-weight: bold;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>فحص التشابه</h1>
+
+        <form action="/check" method="POST">
+            <textarea name="text1" placeholder="أدخل النص الأول هنا..."></textarea>
+            <br>
+            <textarea name="text2" placeholder="أدخل النص الثاني هنا..."></textarea>
+            <br>
+            <button type="submit">افحص التشابه</button>
+        </form>
+
+        {% if result %}
+        <div class="result-box">
+            <h2>نتيجة فحص التشابه</h2>
+            <p class="result-text">{{ result }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
